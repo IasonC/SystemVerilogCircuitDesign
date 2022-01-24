@@ -1,0 +1,58 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+S_0000024cbbb492b0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0000024cbbb49440 .scope module, "and2_tb" "and2_tb" 3 5;
+ .timescale -9 -12;
+v0000024cbbb4bb70_0 .var "a", 0 0;
+v0000024cbbb95fb0_0 .var "b", 0 0;
+v0000024cbbb96050_0 .net "y", 0 0, L_0000024cbbb63460;  1 drivers
+S_0000024cbbb95e20 .scope module, "dut" "and2" 3 8, 4 1 0, S_0000024cbbb49440;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "y";
+L_0000024cbbb63460 .functor AND 1, v0000024cbbb4bb70_0, v0000024cbbb95fb0_0, C4<1>, C4<1>;
+v0000024cbbb495d0_0 .net "a", 0 0, v0000024cbbb4bb70_0;  1 drivers
+v0000024cbbb63140_0 .net "b", 0 0, v0000024cbbb95fb0_0;  1 drivers
+v0000024cbbb4bad0_0 .net "y", 0 0, L_0000024cbbb63460;  alias, 1 drivers
+    .scope S_0000024cbbb49440;
+T_0 ;
+    %vpi_call/w 3 12 "$dumpfile", "and2_tb.vcd" {0 0 0};
+    %vpi_call/w 3 14 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000024cbbb49440 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000024cbbb4bb70_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000024cbbb95fb0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000024cbbb95fb0_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000024cbbb4bb70_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000024cbbb95fb0_0, 0, 1;
+    %delay 20000, 0;
+    %end;
+    .thread T_0;
+    .scope S_0000024cbbb49440;
+T_1 ;
+    %vpi_call/w 3 25 "$monitor", "t = %3d, a = %b, b = %b, y = %b \012", $time, v0000024cbbb4bb70_0, v0000024cbbb95fb0_0, v0000024cbbb96050_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "and2_tb.sv";
+    "./and2.sv";
