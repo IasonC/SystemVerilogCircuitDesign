@@ -1,0 +1,92 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+S_00000219ca83aef0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_00000219ca886000 .scope module, "seq_logic_tb" "seq_logic_tb" 3 6;
+ .timescale -9 -12;
+v00000219ca83b880_0 .var "A", 0 0;
+v00000219ca83b920_0 .var "CLK", 0 0;
+v00000219ca83b9c0_0 .net "F", 0 0, v00000219ca8863c0_0;  1 drivers
+v00000219ca83ba60_0 .var "select", 0 0;
+S_00000219ca886190 .scope module, "dut" "seq_logic" 3 9, 4 1 0, S_00000219ca886000;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "select";
+    .port_info 2 /INPUT 1 "CLK";
+    .port_info 3 /OUTPUT 1 "F";
+L_00000219ca886460 .functor NOT 1, v00000219ca8863c0_0, C4<0>, C4<0>, C4<0>;
+v00000219ca886320_0 .net "A", 0 0, v00000219ca83b880_0;  1 drivers
+v00000219ca853140_0 .net "CLK", 0 0, v00000219ca83b920_0;  1 drivers
+v00000219ca8863c0_0 .var "F", 0 0;
+v00000219ca83b6a0_0 .net *"_ivl_0", 0 0, L_00000219ca886460;  1 drivers
+v00000219ca83b740_0 .net "mux_out", 0 0, L_00000219ca83bb00;  1 drivers
+v00000219ca83b7e0_0 .net "select", 0 0, v00000219ca83ba60_0;  1 drivers
+E_00000219ca8762d0 .event posedge, v00000219ca853140_0;
+L_00000219ca83bb00 .functor MUXZ 1, L_00000219ca886460, v00000219ca83b880_0, v00000219ca83ba60_0, C4<>;
+    .scope S_00000219ca886190;
+T_0 ;
+    %wait E_00000219ca8762d0;
+    %load/vec4 v00000219ca83b740_0;
+    %assign/vec4 v00000219ca8863c0_0, 0;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_00000219ca886000;
+T_1 ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000219ca83b920_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000219ca83b920_0, 0, 1;
+    %delay 10000, 0;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00000219ca886000;
+T_2 ;
+    %vpi_call/w 3 20 "$dumpfile", "seq_logic_tb.vcd" {0 0 0};
+    %vpi_call/w 3 22 "$dumpvars", 32'sb00000000000000000000000000000000, S_00000219ca886000 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000219ca83b880_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000219ca83ba60_0, 0, 1;
+    %delay 15000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000219ca83b880_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000219ca83b880_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000219ca83ba60_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000219ca83b880_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000219ca83b880_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000219ca83ba60_0, 0, 1;
+    %delay 10000, 0;
+    %vpi_call/w 3 40 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+    .scope S_00000219ca886000;
+T_3 ;
+    %vpi_call/w 3 45 "$monitor", "t = %3d, A = %d select = %d F = %d", $time, v00000219ca83b880_0, v00000219ca83ba60_0, v00000219ca83b9c0_0 {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "seq_logic_tb.sv";
+    "./seq_logic.sv";
