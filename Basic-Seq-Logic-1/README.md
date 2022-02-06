@@ -20,6 +20,7 @@ seq_logic_tb.sv:40: $finish called at 75000 (1ps)
 ```
 
 This is shown graphically by the GTKWave analyser:
+
 ![image](https://user-images.githubusercontent.com/73920832/152664850-914e3249-e656-4228-827a-9d77629de614.png)
 
 For the first 20 ns, the output F is ambiguous (X). Then the output is correct for the operation of the logic circuit with input A, clock signal CLK (square wave with period 20 ns) and _select_ signal to assert the multiplexer (MUX).
