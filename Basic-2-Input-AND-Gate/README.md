@@ -1,3 +1,5 @@
+A two-input AND logic gate is implemented with the SystemVerilog (SV) Hardware Description Language (HDL).
+
 The AND gate is implemented as a SV file *and2.sv*. The testbench file *and2_tb.sv* is used to test all outputs of the AND gate for all possible inputs.
 
 The output *y* of and2.sv for all inputs 00, 01, 10, 11 is shown in the GTKWave waveform analyser as:
